@@ -77,8 +77,14 @@ def handle_message(event):
     mesg = msg
     now_time = time.ctime(time.time())
     url = requests.get("http://218.161.40.232:8081/line_bot_return")
+    if(url == NULL):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="404-1"))
     text =  url.text
+    if(text == NULL):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="404-2"))
     data = json.loads(text)
+    if(data == NULL):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="404-3"))
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=data['message']))
     #if '最新合作廠商' in msg:
     #    message = imagemap_message()
