@@ -77,12 +77,12 @@ def handle_message(event):
     mesg = msg
     now_time = time.ctime(time.time())
     try:
-        url = requests.get("http://218.161.40.232:8081/line_bot_return", timeout = 3)
+        url = requests.get("http://218.161.40.232:8081/line_bot_return", timeout = 2)
         text =  url.text
         data = json.loads(text)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=data['message']))
     except:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="error"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="與伺服器連接中斷，請稍後嘗試"))
     #if '最新合作廠商' in msg:
     #    message = imagemap_message()
     #    line_bot_api.reply_message(event.reply_token, message)
