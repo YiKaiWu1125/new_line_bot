@@ -81,6 +81,7 @@ def handle_message(event):
         text =  url.text
         data = json.loads(text)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=data['message']))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="伺服器連線中斷中\n請重新啟動伺服器後再重新嘗試"))
     except:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="伺服器連線中斷中\n請重新啟動伺服器後再重新嘗試"))
     
