@@ -78,11 +78,11 @@ def handle_message(event):
     now_time = time.ctime(time.time())
     try:
         text = {"time" :now_time , "message" :mesg}
-        url = requests.post("http://218.161.40.232:8081/line_bot_return",data=text ,timeout = 2)
+        url = requests.post("http://218.161.40.232:8081/line_bot_return",data=text)
         # text =  url.text
         # data = json.loads(text)
         # line_bot_api.reply_message(event.reply_token, TextSendMessage(text=data['message']))
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="SUCCESS"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=text['message']))
     except:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="與伺服器連接中斷，請稍後嘗試"))
     #if '最新合作廠商' in msg:
