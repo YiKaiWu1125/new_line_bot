@@ -77,7 +77,8 @@ def handle_message(event):
     mesg = msg
     now_time = time.ctime(time.time())
     try:
-        url = requests.get("http://218.161.40.232:8081/line_bot_return", timeout = 2)
+        text = {"time" :now_time , "message" :mesg}
+        url = requests.post("http://218.161.40.232:8081/line_bot_return",data=text ,timeout = 2)
         text =  url.text
         data = json.loads(text)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=data['message']))
